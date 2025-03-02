@@ -40,7 +40,7 @@ def plotter(input):
     plt.plot(t, triangular(t, *popt), label='Fitted function')
     plt.xlabel("Time [s]")
     plt.ylabel("Voltage [V]")
-    plt.title("Output functiongenerator")
+    plt.title("Output function generator")
     
     
     information_string_entladen = r""" $ U(t)= a + b \times |t-c| $
@@ -124,7 +124,8 @@ def plotter(input):
 
 if __name__ == "__main__":
     l = [
-        ["F0010CH1.CSV","F0010CH2.CSV", "00.png",0,"driven_piezo"],
+        ["F0018CH1.CSV","F0018CH2.CSV", "00.png",0,"driven_piezo"],
     ]
     plotter(l[0])
 
+#Test
