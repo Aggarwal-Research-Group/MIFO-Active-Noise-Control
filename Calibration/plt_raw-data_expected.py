@@ -10,8 +10,10 @@ def voltage_to_displacement(voltage,direction):
                                delimiter=",",
                                 skip_header=2)
     voltage_index = piezo_data[:,0]
-    if direction=="up": piezo_displacement = piezo_data[:,1]
-    elif direction=="down": piezo_displacement = piezo_data[:,2]
+
+    if direction >0: piezo_displacement = piezo_data[:,1]
+    elif direction <0: piezo_displacement = piezo_data[:,2]
+
     else: 
         print("Direction set to up automatically")
 
@@ -29,9 +31,9 @@ def displacement_to_voltage(displacement,direction):
                                delimiter=",",
                                 skip_header=2)
     voltage_index = piezo_data[:,0]
-    if direction=="up": 
+    if direction > 0: 
         piezo_displacement = piezo_data[:,1]
-    elif direction=="down":
+    elif direction < 0:
         piezo_displacement = piezo_data[:,2]
     else:
         piezo_displacement = piezo_data[:,1]
@@ -85,10 +87,10 @@ def plotter(input):
     starting_peaks = [1,4]
     for i in starting_peaks:
         if i%2==0: 
-            direction = "down"
+            direction = -1
             wavelength_x = -wavelength
         else: 
-            direction = "up"
+            direction = 1
             wavelength_x = wavelength
 
         start_voltage = triangular(time[peak_index[i]],*popt)*voltage_amplification
